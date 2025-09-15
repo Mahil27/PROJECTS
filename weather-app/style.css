@@ -1,0 +1,12 @@
+body{font-family:Arial,Helvetica,sans-serif;background:#eef2ff;margin:0;padding:30px;display:flex;justify-content:center}
+.wrap{width:100%;max-width:760px}
+h1{margin:0 0 12px}
+form{display:flex;gap:8px;margin-bottom:12px}
+input{flex:1;padding:10px;border-radius:8px;border:1px solid #d6d9e6}
+button{padding:10px 14px;border-radius:8px;border:none;background:#0b63ff;color:#fff;cursor:pointer}
+.card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 10px 30px rgba(13,20,40,0.06)}
+.hidden{display:none}
+.error{color:#b00020;background:#fff0f0;padding:10px;border-radius:8px;margin-top:8px}
+.weather-row{display:flex;align-items:center;gap:12px}
+.weather-temp{font-size:36px;font-weight:600}
+.small{color:#666}
