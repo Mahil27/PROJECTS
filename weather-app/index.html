@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; }
+    body {
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .weather-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h1 { margin-bottom: 20px; font-weight: 700; color: #333; }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #74ebd5;
+      box-shadow: 0 0 8px rgba(116,235,213,0.5);
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #74ebd5;
+      color: #fff;
+      font-weight: 500;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover { background: #4ac9b5; }
+
+    #error {
+      color: #ff4d4f;
+      margin-bottom: 10px;
+      font-weight: 500;
+      display: none;
+    }
+
+    #result {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .weather-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .weather-temp {
+      font-size: 36px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .small { color: #555; font-size: 14px; }
+
+    img { width: 80px; height: 80px; }
+
+    @media (max-width: 500px) {
+      .weather-container { padding: 20px; }
+      .weather-temp { font-size: 28px; }
+      img { width: 60px; height: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="weather-container">
+    <h1>Weather App</h1>
+    <form id="searchForm">
+      <input type="text" id="city" placeholder="Enter city">
+      <button type="submit">Search</button>
+    </form>
+    <div id="error"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('searchForm');
+    const cityInput = document.getElementById('city');
+    const result = document.getElementById('result');
+    const errorEl = document.getElementById('error');
+
+    const API_KEY = '2d67759607eab8c39e30920199f959f4'; // your key
+
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+      result.style.display = 'none';
+    }
+
+    function showResult(data) {
+      errorEl.style.display = 'none';
+      result.style.display = 'block';
+
+      if (!data || (data.cod && data.cod !== 200)) {
+        result.innerHTML = `<p>Could not find weather for that city.</p>`;
+        return;
+      }
+
+      const icon = data.weather?.[0]?.icon || '';
+      result.innerHTML = `
+        <div class="weather-row">
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather Icon">
+          <div>
+            <div class="weather-temp">${Math.round(data.main.temp)}°C</div>
+            <div class="small">${data.name}, ${data.sys?.country || ''} • ${data.weather?.[0]?.description || ''}</div>
+          </div>
+        </div>
+        <div style="margin-top:12px" class="small">
+          Feels like: ${Math.round(data.main.feels_like)}°C • Humidity: ${data.main.humidity}% • Wind: ${data.wind.speed} m/s
+        </div>
+      `;
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const city = cityInput.value.trim();
+      if (!city) return;
+
+      result.style.display = 'none';
+      errorEl.style.display = 'none';
+
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${API_KEY}`
+        );
+        const data = await res.json();
+        if (!res.ok) showError(data?.message || 'Failed to fetch');
+        else showResult(data);
+      } catch(err) {
+        showError('Network error or invalid API key.');
+        console.error(err);
+      }
+    });
+  </script>
+
+</body>
+</html>
