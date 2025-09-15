@@ -1,12 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Projects</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Projects | Mahil Dev</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; background: #f4f7f8; color: #333; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
+    .hero { background: linear-gradient(135deg, #36d1dc, #5b86e5); color: #fff; padding: 80px 20px; text-align: center; }
+    .hero h1 { font-size: 42px; margin-bottom: 15px; }
+    .hero p { font-size: 18px; }
+
+    /* Container */
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+    /* Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+
+    /* Cards */
+    .card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .card h2 { margin-bottom: 12px; font-size: 22px; color: #36d1dc; }
+    .card p { font-size: 16px; color: #555; }
+
+    /* Footer */
+    footer { text-align: center; padding: 25px 20px; margin-top: 50px; background: #222; color: #fff; border-radius: 12px; }
+    footer a { color: #36d1dc; transition: 0.3s; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media(max-width: 600px){
+      .hero h1 { font-size: 32px; }
+      .card h2 { font-size: 20px; }
+      .card p { font-size: 14px; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header class="hero">
     <div class="container">
       <h1>My Projects</h1>
@@ -14,25 +50,28 @@
     </div>
   </header>
 
+  <!-- Main Grid -->
   <main class="container grid">
-    <a class="card" href="portfolio/">
-      <h2>Portfolio</h2>
-      <p>My public portfolio website.</p>
+    <a class="card" href="portfolio/" target="_blank">
+      <h2>🌐 Portfolio</h2>
+      <p>My public portfolio website showcasing skills, projects, and resume.</p>
     </a>
 
-    <a class="card" href="weather-app/">
-      <h2>Weather App</h2>
-      <p>Search a city and see live weather (secure API backend).</p>
+    <a class="card" href="weather-app/" target="_blank">
+      <h2>🌦️ Weather App</h2>
+      <p>Search a city and see live weather updates (secure API backend).</p>
     </a>
 
-    <a class="card" href="student-management/">
-      <h2>Student Management</h2>
-      <p>Mini student CRUD (client-side demo using localStorage).</p>
+    <a class="card" href="student-management/" target="_blank">
+      <h2>👨‍🎓 Student Management</h2>
+      <p>Mini student CRUD demo using client-side localStorage.</p>
     </a>
   </main>
 
+  <!-- Footer -->
   <footer class="container">
-    <p>Built with ❤️ — deploy backend to Vercel and set `WEATHER_KEY`.</p>
+    <p>Built with ❤️ by Mahil Dev — deploy backend to Vercel and set <code>WEATHER_KEY</code>.</p>
   </footer>
+
 </body>
 </html>
