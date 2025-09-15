@@ -1,87 +1,60 @@
+/* Basic styling */
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #36d1dc, #5b86e5);
-  margin: 0;
-  padding: 0;
+  margin:0; padding:0;
+  transition: background 0.3s, color 0.3s;
 }
-
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 50px auto;
   background: #fff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
+h1 { text-align: center; margin-bottom: 15px; }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+form, .sort-buttons {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;
 }
 
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-form input, form button {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+form input[type="text"], form input[type="number"], form button {
+  padding: 10px; border-radius: 6px; border: 1px solid #ccc;
 }
 
 form input[type="text"], form input[type="number"] {
-  flex: 1 1 150px;
+  flex: 1 1 120px;
 }
 
-form button {
-  background: #5b86e5;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  flex: 1 1 150px;
+form button, .sort-buttons button, #darkModeBtn {
+  flex: 1 1 120px; cursor: pointer; border: none; border-radius: 6px;
+  background:#5b86e5; color:#fff; transition: background 0.3s;
 }
-
-form button:hover {
-  background: #36d1dc;
-}
+form button:hover, .sort-buttons button:hover, #darkModeBtn:hover { background: #36d1dc; }
 
 #search {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
+  width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 15px;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
+  width: 100%; border-collapse: collapse; margin-bottom: 15px;
 }
+table th, table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+table th { background: #5b86e5; color: #fff; }
 
-table th, table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
+.action-btn { padding:6px 10px; border:none; border-radius:6px; cursor:pointer; margin-right:5px; }
+.edit-btn { background:#ffc107; color:#fff; } .edit-btn:hover { background:#e0a800; }
+.delete-btn { background:#dc3545; color:#fff; } .delete-btn:hover { background:#c82333; }
 
-table th {
-  background: #5b86e5;
-  color: #fff;
-}
+.status-pass { color: green; font-weight: bold; }
+.status-fail { color: red; font-weight: bold; }
 
-.action-btn {
-  padding: 6px 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-right: 5px;
-}
+#pagination { display:flex; justify-content:center; gap:10px; margin-top:10px; }
+.page-btn { padding:6px 10px; cursor:pointer; border:1px solid #ccc; border-radius:6px; }
+.page-btn.active { background:#5b86e5; color:#fff; border:none; }
 
-.edit-btn { background: #ffc107; color: #fff; }
-.edit-btn:hover { background: #e0a800; }
-
-.delete-btn { background: #dc3545; color: #fff; }
-.delete-btn:hover { background: #c82333; }
+body.dark-mode { background:#121212; color:#fff; }
+body.dark-mode .container { background:#1e1e1e; }
+body.dark-mode table th { background:#36d1dc; }
+body.dark-mode form button, body.dark-mode .sort-buttons button, body.dark-mode #darkModeBtn { background:#36d1dc; }
