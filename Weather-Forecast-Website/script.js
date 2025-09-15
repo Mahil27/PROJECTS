@@ -1,6 +1,3 @@
-const apiKey = "YOUR_API_KEY"; // REPLACE THIS TEXT
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
-
 const cityInput = document.getElementById("city-input");
 const searchBtn = document.getElementById("search-btn");
 const weatherInfo = document.getElementById("weather-info");
@@ -14,19 +11,21 @@ async function checkWeather(city) {
     weatherInfo.style.display = "none";
 
     try {
-        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-        if (response.status == 404) {
-            errorMessage.textContent = "City not found. Please try again.";
+        // Updated URL: This now calls your secure backend
+        const response = await fetch(`/api/weather?city=${city}`); 
+        
+        if (!response.ok) {
+            errorMessage.textContent = "City not found or an error occurred. Please try again.";
             errorMessage.style.display = "block";
             return;
         }
-
+        
         const data = await response.json();
-
+        
         cityName.textContent = data.name;
         temp.textContent = `${Math.round(data.main.temp)}°C`;
         description.textContent = data.weather[0].description;
-
+        
         weatherInfo.style.display = "block";
 
     } catch (error) {
