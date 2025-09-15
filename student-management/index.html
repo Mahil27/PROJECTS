@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Management System</title>
+<title>Advanced Student Management</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-  <h1>Student Management System</h1>
+  <h1>Advanced Student Management System</h1>
+
+  <!-- Dark mode toggle -->
+  <button id="darkModeBtn">Toggle Dark Mode</button>
 
   <!-- Add Student Form -->
   <form id="studentForm">
@@ -16,11 +19,19 @@
     <input type="text" id="name" placeholder="Student Name" required>
     <input type="number" id="age" placeholder="Age" required>
     <input type="text" id="grade" placeholder="Grade/Class" required>
+    <input type="number" id="score" placeholder="Score (0-100)" required>
     <button type="submit">Add / Update Student</button>
   </form>
 
   <!-- Search -->
   <input type="text" id="search" placeholder="Search students...">
+
+  <!-- Sorting -->
+  <div class="sort-buttons">
+    <button onclick="sortStudents('name')">Sort by Name</button>
+    <button onclick="sortStudents('age')">Sort by Age</button>
+    <button onclick="sortStudents('score')">Sort by Score</button>
+  </div>
 
   <!-- Student Table -->
   <table>
@@ -29,13 +40,16 @@
         <th>Name</th>
         <th>Age</th>
         <th>Grade</th>
+        <th>Score</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody id="studentList">
-      <!-- Students will appear here -->
-    </tbody>
+    <tbody id="studentList"></tbody>
   </table>
+
+  <!-- Pagination -->
+  <div id="pagination"></div>
 </div>
 
 <script src="script.js"></script>
