@@ -1,0 +1,87 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form input, form button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+form input[type="text"], form input[type="number"] {
+  flex: 1 1 150px;
+}
+
+form button {
+  background: #5b86e5;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  flex: 1 1 150px;
+}
+
+form button:hover {
+  background: #36d1dc;
+}
+
+#search {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background: #5b86e5;
+  color: #fff;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.edit-btn { background: #ffc107; color: #fff; }
+.edit-btn:hover { background: #e0a800; }
+
+.delete-btn { background: #dc3545; color: #fff; }
+.delete-btn:hover { background: #c82333; }
