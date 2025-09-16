@@ -9,11 +9,7 @@
 <body>
 <div class="container">
   <h1>Advanced Student Management System</h1>
-
-  <!-- Dark mode toggle -->
   <button id="darkModeBtn">Toggle Dark Mode</button>
-
-  <!-- Add Student Form -->
   <form id="studentForm">
     <input type="hidden" id="studentId">
     <input type="text" id="name" placeholder="Student Name" required>
@@ -22,18 +18,12 @@
     <input type="number" id="score" placeholder="Score (0-100)" required>
     <button type="submit">Add / Update Student</button>
   </form>
-
-  <!-- Search -->
   <input type="text" id="search" placeholder="Search students...">
-
-  <!-- Sorting -->
   <div class="sort-buttons">
     <button onclick="sortStudents('name')">Sort by Name</button>
     <button onclick="sortStudents('age')">Sort by Age</button>
     <button onclick="sortStudents('score')">Sort by Score</button>
   </div>
-
-  <!-- Student Table -->
   <table>
     <thead>
       <tr>
@@ -47,8 +37,6 @@
     </thead>
     <tbody id="studentList"></tbody>
   </table>
-
-  <!-- Pagination -->
   <div id="pagination"></div>
 </div>
 
